@@ -11,7 +11,7 @@ export default {
    */
    encrypt: (cipher, key, value) => {
 
-    const c = Crypto.createCipher(cipher, key)
+    const c = Crypto.createCipheriv(cipher, key)
 
     let crypted = c.update(value, 'utf8', 'hex')
     crypted += c.final('hex');
@@ -28,7 +28,7 @@ export default {
    */
    decrypt: (cipher, key, value) => {
 
-    const d = Crypto.createDecipher(cipher, key)
+    const d = Crypto.createDecipheriv(cipher, key)
 
     let deciphered = d.update(value, 'hex', 'utf8')
     deciphered += d.final('utf8');
