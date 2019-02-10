@@ -16,7 +16,7 @@ exports['default'] = {
    */
   encrypt: function encrypt(cipher, key, value) {
 
-    var c = Crypto.createCipher(cipher, key);
+    var c = Crypto.createCipheriv(cipher, key);
 
     var crypted = c.update(value, 'utf8', 'hex');
     crypted += c.final('hex');
@@ -33,7 +33,7 @@ exports['default'] = {
    */
   decrypt: function decrypt(cipher, key, value) {
 
-    var d = Crypto.createDecipher(cipher, key);
+    var d = Crypto.createDecipheriv(cipher, key);
 
     var deciphered = d.update(value, 'hex', 'utf8');
     deciphered += d.final('utf8');
